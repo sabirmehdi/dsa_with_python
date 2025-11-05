@@ -31,10 +31,12 @@ class LinkedList:
         print("None")
 
     # function to insert at beginning
-    def insert_at_beginning(self, data):
+    
+    def insert_start(self,data):
         new_node = Node(data)
-        new_node.next = self.head
-        self.head = new_node
+        new_node.next=self.head
+        self.head=new_node
+
 
     # function to delete a node by value
     def delete_node(self, key):
@@ -67,11 +69,12 @@ num=input("Add node: ")
 while(n!=0):
     
     list1.insert_at_end(num)
-    list1.display()
 
+    list1.display()
     num=input("Add node: ")
-    print("Exit")
     n=int(input())
+list1.insert_start(100)
+list1.display()
    
 #list1.insert_at_beginning(5)
 #list1.display()          # Output: 5 -> 10 -> 20 -> 30 -> None
