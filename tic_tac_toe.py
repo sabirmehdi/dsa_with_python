@@ -14,7 +14,7 @@ def clear_screen():
 
 def display_board():
     """Prints the current state of the Tic-Tac-Toe board."""
-    clear_screen()
+    # clear_screen()  // calling this function here do not show error messages in invalid move
     print(f" {board[0]} | {board[1]} | {board[2]} ")
     print("---|---|---")
     print(f" {board[3]} | {board[4]} | {board[5]} ")
@@ -61,6 +61,7 @@ def play_game():
             continue
 
         board[move] = current_player
+        clear_screen()
 
         if check_win(current_player):
             display_board()
@@ -76,3 +77,4 @@ def play_game():
 # Start the game
 if __name__ == "__main__":
     play_game()
+    
