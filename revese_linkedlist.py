@@ -1,66 +1,67 @@
-class ListNode:
-    """Blueprint for a single node in the linked list."""
-    def __init__(self, val=0, next=None):
-        self.val = val
-        self.next = next
-
-def reverse_list(head: ListNode | None) -> ListNode | None:
+class Node:
     """
-    Reverses a singly linked list iteratively using three pointers.
+    Every item in our list is a 'Node'.
+    It holds a value and a pointer (link) to the next Node.
+    """
+    def __init__(self, value=0, next_node=None):
+        self.value = value
+        self.next_node = next_node
+
+
+def reverse_list(head):
+    """
+    Flips the direction of the links in the list.
+    We use three variables to keep track of where we are.
     """
     
-    # 'prev' tracks the node that has already been reversed (new end).
-    prev = None
+    
+    previous = None
+    
     current = head
     
     while current is not None:
         
-        next_node = current.next
+        next_to_process = current.next_node
         
-        # Reverse the pointer: current node points backward to 'prev'.
-        current.next = prev
+        current.next_node = previous
         
-        prev = current
-        current = next_node
+        previous = current
         
-    # 'prev' is the new head of the reversed list.
-    return prev
+        current = next_to_process
+        
+    return previous
 
-def create_linked_list(data: list) -> ListNode | None:
+
+def create_list(data):
+    """Helper to build a list from a simple Python list."""
     if not data:
         return None
-    head = ListNode(data[0])
+    head = Node(data[0])
     current = head
-    for val in data[1:]:
-        current.next = ListNode(val)
-        current = current.next
+    for value in data[1:]:
+        current.next_node = Node(value)
+        current = current.next_node
     return head
 
-def print_linked_list(head: ListNode | None):
+def print_list(head):
+    """Helper to print the list values."""
     values = []
     current = head
     while current:
-        values.append(str(current.val))
-        current = current.next
+        values.append(str(current.value))
+        current = current.next_node
     print(" -> ".join(values))
 
 if __name__ == "__main__":
     
-    # Create the original list: 1 -> 2 -> 3 -> 4 -> None
-    original_data = [1, 2, 3, 4]
-    head = create_linked_list(original_data)
+    start_data = [1, 2, 3, 4]
+    my_list = create_list(start_data)
     
     print("Original List:")
-    print_linked_list(head)
+    print_list(my_list)
     
-    # Call the reversal function
-    reversed_head = reverse_list(head)
+    # Reverse it!
+    reversed_list = reverse_list(my_list)
     
     print("\nReversed List:")
-    print_linked_list(reversed_head)
-    
-    # Test a case with an empty list
-    empty_list_head = create_linked_list([])
-    reversed_empty_list = reverse_list(empty_list_head)
-    print("\nReversed Empty List (should be nothing):")
-    print_linked_list(reversed_empty_list)
+    print_list(reversed_list)
