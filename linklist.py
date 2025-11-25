@@ -12,8 +12,8 @@ class LinkedList:
 
     # function to insert a new node at the end
     def insert_at_end(self, data):
-        new_node = Node(data)
-        if self.head is None:
+        new_node = Node(data) //20
+        if self.head is None:  
             self.head = new_node
             return
 
@@ -65,7 +65,7 @@ class LinkedList:
 # ---- Testing the LinkedList ----
 list1 = LinkedList()
 n=1
-num=input("Add node: ")
+num=input("Add node:")
 while(n!=0):
     
     list1.insert_at_end(num)
