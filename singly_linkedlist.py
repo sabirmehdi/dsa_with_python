@@ -11,8 +11,6 @@ n1.next = n2
 n1.data = 1000
 
 n2.next = n3
-n3.next= n4
-n4.next =  None
 current_node = n1
 while current_node:
     print(current_node.data, end=" -> ")
